@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ربح المال - طريقك نحو الحرية المالية | SantaDevX</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e8f5e8 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1e40af;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #1e40af;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1e40af 0%, #059669 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1e40af;
+            border: 2px solid #1e40af;
+        }
+
+        .btn-secondary:hover {
+            background: #1e40af;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .earning-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: white;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .earning-badge .icon {
+            width: 30px;
+            height: 30px;
+            background: #059669;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e8f5e8 100%);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: #1e40af;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e8f5e8 100%);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .steps-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #1e40af;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 1.25rem;
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e8f5e8 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stars {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            color: #fbbf24;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #4b5563;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: #1e40af;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .author-info h5 {
+            font-weight: bold;
+            color: #1e40af;
+        }
+
+        .author-info p {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e8f5e8 100%);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.popular {
+            border-color: #1e40af;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            background: #1e40af;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #6b7280;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .check-icon {
+            color: #059669;
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1e40af 0%, #059669 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 1rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        .santadevx-signature {
+            background: linear-gradient(135deg, #1e40af 0%, #059669 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .santadevx-signature:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <span>💰</span>
+                    <span>ربح المال</span>
+                    <span class="santadevx-signature">SantaDevX</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#features">الميزات</a></li>
+                    <li><a href="#how-it-works">كيف يعمل</a></li>
+                    <li><a href="#pricing">الأسعار</a></li>
+                    <li><a href="#testimonials">آراء العملاء</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="#" class="btn btn-secondary">تسجيل الدخول</a>
+                    <a href="#" class="btn btn-primary">ابدأ الآن</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <div class="hero-text">
+                    <h1>اربح المال من المنزل</h1>
+                    <p>اكتشف طرق مضمونة للربح عبر الإنترنت وابدأ رحلتك نحو الحرية المالية. انضم إلى آلاف الأشخاص الذين يحققون دخلاً إضافياً يومياً.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary pulse">ابدأ الربح الآن</a>
+                        <a href="#how-it-works" class="btn btn-secondary">شاهد كيف يعمل</a>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+                        تطوير وتصميم: <span class="santadevx-signature">SantaDevX</span>
+                    </p>
+                </div>
+                <div class="hero-image">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDUwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMUU0MEFGIi8+Cjx0ZXh0IHg9IjI1MCIgeT0iMTUwIiBmaWxsPSJ3aGl0ZSIgZm9udC1zaXplPSIyNCIgZm9udC1mYW1pbHk9IkFyaWFsIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5FQVNZIFdBWVMgVE8gRUFSTiBNT05FWSBPTkxJTkU8L3RleHQ+Cjwvc3ZnPgo=" alt="Earn Money Online">
+                    <div class="earning-badge">
+                        <div class="icon">$</div>
+                        <div>
+                            <p style="font-size: 0.8rem; color: #6b7280;">الربح اليومي</p>
+                            <p style="font-weight: bold; color: #059669;">$150+</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>لماذا تختارنا؟</h2>
+                <p>نوفر لك أفضل الطرق المجربة والمضمونة لتحقيق دخل إضافي من المنزل</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>نمو مستمر</h3>
+                    <p>استراتيجيات مجربة تضمن لك نمو دخلك بشكل مستمر ومتزايد مع الوقت</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>مجتمع داعم</h3>
+                    <p>انضم إلى مجتمع من الأشخاص الناجحين الذين يشاركون خبراتهم ونصائحهم</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>جودة عالية</h3>
+                    <p>محتوى عالي الجودة ومحدث باستمرار ليواكب أحدث طرق الربح عبر الإنترنت</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <span class="santadevx-signature">Powered by SantaDevX</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>كيف يعمل؟</h2>
+                <p>خطوات بسيطة للبدء في رحلتك نحو الربح عبر الإنترنت</p>
+            </div>
+            <div class="steps-container">
+                <div class="steps-image">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDUwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMDU5NjY5Ii8+Cjx0ZXh0IHg9IjI1MCIgeT0iMTUwIiBmaWxsPSJ3aGl0ZSIgZm9udC1zaXplPSIyNCIgZm9udC1mYW1pbHk9IkFyaWFsIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QRU9QTEUgV09SS0lORyBPTiBMQVBUT1A8L3RleHQ+Cjwvc3ZnPgo=" alt="People Working">
+                </div>
+                <div class="steps-list">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>سجل حسابك</h4>
+                            <p>إنشاء حساب مجاني والحصول على دليل البداية الشامل</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>اختر طريقتك</h4>
+                            <p>اختر من بين عشرات الطرق المجربة التي تناسب مهاراتك ووقتك</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>ابدأ التطبيق</h4>
+                            <p>طبق الاستراتيجيات خطوة بخطوة مع الدعم المستمر من فريقنا</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>احصل على النتائج</h4>
+                            <p>شاهد دخلك ينمو يوماً بعد يوم واستمتع بالحرية المالية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>ماذا يقول عملاؤنا؟</h2>
+                <p>قصص نجاح حقيقية من أشخاص حققوا أحلامهم المالية معنا</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                    </div>
+                    <p class="testimonial-text">"بفضل هذا الموقع، تمكنت من تحقيق دخل شهري يزيد عن 3000 دولار من المنزل. الطرق المقدمة فعالة ومجربة حقاً!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">أ</div>
+                        <div class="author-info">
+                            <h5>أحمد محمد</h5>
+                            <p>مطور ويب</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                    </div>
+                    <p class="testimonial-text">"كنت أبحث عن طريقة لزيادة دخلي، ووجدت هنا كل ما أحتاجه. الآن أحقق أرباحاً يومية مستقرة وأنا في المنزل."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">س</div>
+                        <div class="author-info">
+                            <h5>سارة أحمد</h5>
+                            <p>مصممة جرافيك</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                    </div>
+                    <p class="testimonial-text">"المحتوى عالي الجودة والدعم ممتاز. تمكنت من ترك وظيفتي التقليدية والعمل بدوام كامل من المنزل بدخل أعلى!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">م</div>
+                        <div class="author-info">
+                            <h5>محمد علي</h5>
+                            <p>مسوق رقمي</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <span class="santadevx-signature">Testimonials verified by SantaDevX</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>اختر الخطة المناسبة لك</h2>
+                <p>خطط مرنة تناسب جميع الاحتياجات والميزانيات</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>الخطة الأساسية</h3>
+                    <div class="price">مجاني</div>
+                    <ul class="features-list">
+                        <li><span class="check-icon">✓</span> دليل البداية المجاني</li>
+                        <li><span class="check-icon">✓</span> 3 طرق أساسية للربح</li>
+                        <li><span class="check-icon">✓</span> دعم المجتمع</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary" style="width: 100%;">ابدأ مجاناً</a>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">الأكثر شعبية</div>
+                    <h3>الخطة الاحترافية</h3>
+                    <div class="price">$29<span>/شهر</span></div>
+                    <ul class="features-list">
+                        <li><span class="check-icon">✓</span> جميع ميزات الخطة الأساسية</li>
+                        <li><span class="check-icon">✓</span> 15+ طريقة متقدمة للربح</li>
+                        <li><span class="check-icon">✓</span> دعم فني مباشر</li>
+                        <li><span class="check-icon">✓</span> تحديثات أسبوعية</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="width: 100%;">اشترك الآن</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>الخطة المتميزة</h3>
+                    <div class="price">$99<span>/شهر</span></div>
+                    <ul class="features-list">
+                        <li><span class="check-icon">✓</span> جميع ميزات الخطة الاحترافية</li>
+                        <li><span class="check-icon">✓</span> استشارات شخصية 1:1</li>
+                        <li><span class="check-icon">✓</span> أدوات تحليل متقدمة</li>
+                        <li><span class="check-icon">✓</span> ضمان استرداد المال</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="width: 100%;">اشترك الآن</a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <span class="santadevx-signature">Pricing plans designed by SantaDevX</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>ابدأ رحلتك نحو الحرية المالية اليوم</h2>
+            <p>لا تضيع المزيد من الوقت. انضم إلى آلاف الأشخاص الذين يحققون أحلامهم المالية معنا</p>
+            <a href="#" class="btn" style="background: white; color: #1e40af; font-size: 1.25rem; padding: 1rem 2rem;">ابدأ الآن مجاناً</a>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                تطوير وتصميم: <span class="santadevx-signature">SantaDevX</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                        <span style="font-size: 1.5rem;">💰</span>
+                        <h4>ربح المال</h4>
+                        <span class="santadevx-signature">SantaDevX</span>
+                    </div>
+                    <p style="color: #9ca3af;">منصتك الموثوقة لتحقيق الحرية المالية من خلال الربح عبر الإنترنت</p>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#features">الميزات</a></li>
+                        <li><a href="#pricing">الأسعار</a></li>
+                        <li><a href="#testimonials">آراء العملاء</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>الدعم</h4>
+                    <ul>
+                        <li><a href="#">مركز المساعدة</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>تابعنا</h4>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <a href="#" style="color: #9ca3af; text-decoration: none;">فيسبوك</a>
+                        <a href="#" style="color: #9ca3af; text-decoration: none;">تويتر</a>
+                        <a href="#" style="color: #9ca3af; text-decoration: none;">إنستغرام</a>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <span class="santadevx-signature">Follow SantaDevX</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ربح المال. جميع الحقوق محفوظة. | تطوير وتصميم: <span class="santadevx-signature">SantaDevX</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add click effects to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // SantaDevX signature hover effects
+        document.querySelectorAll('.santadevx-signature').forEach(signature => {
+            signature.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1) rotate(2deg)';
+                this.style.boxShadow = '0 10px 25px rgba(30, 64, 175, 0.4)';
+            });
+            
+            signature.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+                this.style.boxShadow = '0 5px 15px rgba(30, 64, 175, 0.3)';
+            });
+        });
+
+        // Console message from SantaDevX
+        console.log('%c🎄 Developed by SantaDevX 🎄', 'color: #1e40af; font-size: 20px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);');
+        console.log('%cThis website was crafted with ❤️ by SantaDevX', 'color: #059669; font-size: 14px;');
+    </script>
+</body>
+</html>
+
