@@ -1,139 +1,614 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>PANEL HEX VX1</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at center, #111 0%, #000 100%);
-      color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .panel {
-      background: #1a1a1a;
-      border: 2px solid #ffb300;
-      border-radius: 18px;
-      box-shadow: 0 0 25px #ffb300aa;
-      width: 380px;
-      max-width: 95%;
-      overflow: hidden;
-      animation: pulseGlow 3s infinite ease-in-out;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 15px #ffb300aa; }
-      50% { box-shadow: 0 0 25px #ffb300; }
-    }
-
-    .title-bar {
-      background: #ffb300;
-      color: #000;
-      padding: 12px 16px;
-      font-weight: bold;
-      font-size: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .close-btn {
-      background: #000;
-      color: #ffb300;
-      border: none;
-      padding: 4px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .content {
-      padding: 30px 20px;
-      text-align: center;
-    }
-
-    .content h1 {
-      font-size: 22px;
-      margin-bottom: 25px;
-      color: #ffb300;
-    }
-
-    .btn {
-      background: #000;
-      border: 2px solid #ffb300;
-      color: #ffb300;
-      padding: 14px;
-      margin: 10px 0;
-      width: 100%;
-      border-radius: 10px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 0 10px #ffb30055;
-    }
-
-    .btn:hover {
-      background: #ffb300;
-      color: #000;
-      box-shadow: 0 0 15px #ffb300;
-    }
-
-    .footer {
-      margin-top: 20px;
-      font-size: 12px;
-      color: #999;
-    }
-
-    .btn i {
-      font-style: normal;
-      background: #ffb300;
-      color: #000;
-      border-radius: 50%;
-      width: 22px;
-      height: 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SantaDevX888 Pro - TikTok Account Ban</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #0f0;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 255, 0, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 0, 0.05) 0%, transparent 20%);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #00ff00;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            text-shadow: 0 0 15px #00ff00, 0 0 20px #00ff00;
+            animation: glitch 3s infinite;
+            color: #ff0033;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            color: #ff0033;
+            margin-top: 10px;
+            font-size: 1.1rem;
+            text-shadow: 0 0 5px #ff0033;
+        }
+        
+        .warning {
+            color: #ff5500;
+            text-align: center;
+            margin: 15px 0;
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px #ff5500;
+            animation: blink 2s infinite;
+        }
+        
+        .input-section {
+            background-color: rgba(30, 0, 0, 0.3);
+            padding: 25px;
+            border: 2px solid #ff0033;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .input-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 0, 0, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        .input-group {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        input {
+            flex: 1;
+            padding: 15px;
+            background-color: #200;
+            border: 2px solid #ff0033;
+            color: #ff0033;
+            outline: none;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        input::placeholder {
+            color: #a00;
+        }
+        
+        button {
+            background-color: #300;
+            color: #ff0033;
+            border: 2px solid #ff0033;
+            padding: 15px 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-left: 10px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+        
+        button:hover {
+            background-color: #500;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+            transform: scale(1.05);
+        }
+        
+        #banButton {
+            display: none;
+            margin: 30px auto;
+            font-size: 1.5rem;
+            padding: 20px 40px;
+            background: linear-gradient(to bottom, #300, #500);
+            border: 3px solid #ff0033;
+            color: #ff0033;
+            text-shadow: 0 0 10px #ff0033;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .result-section {
+            display: none;
+            margin-top: 40px;
+            padding: 25px;
+            border: 2px solid #ff0033;
+            border-radius: 8px;
+            background-color: rgba(30, 0, 0, 0.3);
+            min-height: 300px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+        }
+        
+        .hacking-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255, 0, 0, 0.1) 0px,
+                rgba(255, 0, 0, 0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .status-message {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #ff0033;
+            text-shadow: 0 0 5px #ff0033;
+            text-align: center;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 30px;
+            background-color: #200;
+            border: 2px solid #ff0033;
+            margin: 20px 0;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #ff0033, #ff5500);
+            transition: width 0.5s;
+            box-shadow: 0 0 10px #ff0033;
+        }
+        
+        .code-lines {
+            margin-top: 25px;
+            font-size: 1rem;
+            line-height: 1.6;
+            max-height: 300px;
+            overflow-y: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border: 1px solid #ff003344;
+            border-radius: 5px;
+            color: #ff5500;
+        }
+        
+        .success-message {
+            text-align: center;
+            font-size: 2rem;
+            color: #ff0033;
+            text-shadow: 0 0 15px #ff0033;
+            margin: 30px 0;
+            display: none;
+            animation: glitch 2s infinite;
+            padding: 20px;
+            border: 3px solid #ff0033;
+            border-radius: 10px;
+            background-color: rgba(30, 0, 0, 0.3);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 15px;
+            border-top: 2px solid #ff0033;
+            font-size: 1rem;
+            color: #ff0033;
+            text-shadow: 0 0 5px #ff0033;
+        }
+        
+        .scan-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #ff0033, transparent);
+            animation: scan 2s linear infinite;
+            z-index: 1000;
+            pointer-events: none;
+            display: none;
+        }
+        
+        .binary-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.2;
+        }
+        
+        .skull {
+            position: fixed;
+            font-size: 10rem;
+            color: rgba(255, 0, 0, 0.1);
+            z-index: -1;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes glitch {
+            0% { text-shadow: 0 0 10px #ff0033; transform: translate(0); }
+            20% { text-shadow: -3px -3px 5px #00ff00, 3px 3px 5px #0000ff; transform: translate(2px, -2px); }
+            21% { text-shadow: 0 0 10px #ff0033; transform: translate(0); }
+            40% { text-shadow: -4px -4px 8px #00ff00, 4px 4px 8px #0000ff; transform: translate(-2px, 2px); }
+            41% { text-shadow: 0 0 10px #ff0033; transform: translate(0); }
+            60% { text-shadow: -5px -5px 10px #00ff00, 5px 5px 10px #0000ff; transform: translate(3px, -3px); }
+            61% { text-shadow: 0 0 10px #ff0033; transform: translate(0); }
+            80% { text-shadow: -6px -6px 12px #00ff00, 6px 6px 12px #0000ff; transform: translate(-3px, 3px); }
+            81% { text-shadow: 0 0 10px #ff0033; transform: translate(0); }
+            100% { text-shadow: 0 0 10px #ff0033; transform: translate(0); }
+        }
+        
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.7); }
+            50% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.9); }
+            100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.7); }
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.1; }
+            90% { opacity: 0.1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        /* شريط التمرير المخصص */
+        .code-lines::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .code-lines::-webkit-scrollbar-track {
+            background: #200;
+        }
+        
+        .code-lines::-webkit-scrollbar-thumb {
+            background: #ff0033;
+            border-radius: 5px;
+        }
+        
+        .code-lines::-webkit-scrollbar-thumb:hover {
+            background: #ff5500;
+        }
+    </style>
 </head>
 <body>
-  <div class="panel">
-    <div class="title-bar">
-      PANEL HEX VX1
-      <button class="close-btn">X</button>
+    <div class="scan-line"></div>
+    <div class="binary-rain"></div>
+    
+    <div class="container">
+        <header>
+            <h1>SantaDevX B@n v2.0.0</h1>
+            <p class="tagline">TikTok Account Termination System</p>
+        </header>
+        
+        <div class="warning">تحذير: هذا الموقع لأغراض تعليمية فقط. أي إساءة استخدام ستتعقبها السلطات.</div>
+        
+        <div class="input-section">
+            <h2>أدخل اسم مستخدم TikTok</h2>
+            <div class="input-group">
+                <input type="text" id="usernameInput" placeholder="مثال: example_user">
+                <button id="submitUsername">تحقق</button>
+            </div>
+        </div>
+        
+        <button id="banButton">BAN ACCOUNT</button>
+        
+        <div class="result-section" id="resultSection">
+            <div class="hacking-animation" id="hackingAnimation"></div>
+            <div class="status-message" id="statusMessage"></div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="code-lines" id="codeOutput"></div>
+        </div>
+        
+        <div class="success-message" id="successMessage">
+            !!! تم حظر الحساب بنجاح !!!
+            <div style="font-size: 1.2rem; margin-top: 15px;">SantaDevX Come Back</div>
+        </div>
+        
+        <div class="footer">
+            <p>© Copyright by SantaDevX 2025</p>
+            <p>SantaDevX Ultimate Security Research</p>
+        </div>
     </div>
-    <div class="content">
-      <h1>Script Control Panel</h1>
-      <button class="btn"><i>🎯</i> Enable AIMBOT</button>
-      <button class="btn"><i>🧲</i> ESP Wallhack</button>
-      <button class="btn"><i>🔫</i> No Recoil</button>
-      <button class="btn"><i>🛡️</i> Antiban System</button>
-      <button class="btn"><i>⚙️</i> Auto Headshot</button>
-      <button class="btn"><i>🚀</i> Speed Hack</button>
-      <div class="footer">MADE BY DevX TEAM</div>
-    </div>
-  </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const usernameInput = document.getElementById('usernameInput');
+            const submitButton = document.getElementById('submitUsername');
+            const banButton = document.getElementById('banButton');
+            const resultSection = document.getElementById('resultSection');
+            const statusMessage = document.getElementById('statusMessage');
+            const progressBar = document.getElementById('progressBar');
+            const codeOutput = document.getElementById('codeOutput');
+            const hackingAnimation = document.getElementById('hackingAnimation');
+            const successMessage = document.getElementById('successMessage');
+            const scanLine = document.querySelector('.scan-line');
+            const binaryRain = document.querySelector('.binary-rain');
+            
+            // إنشاء تأثير المطر الرقمي
+            createBinaryRain();
+            
+            // إنشاء جماجم عائمة
+            createFloatingSkulls();
+            
+            // عند النقر على زر التحقق
+            submitButton.addEventListener('click', function() {
+                const username = usernameInput.value.trim();
+                if (username) {
+                    banButton.style.display = 'block';
+                    statusMessage.textContent = `[+] تم العثور على الحساب: ${username}`;
+                    resultSection.style.display = 'block';
+                    codeOutput.textContent = `> بدء تحليل بيانات المستخدم: ${username}\n> جاري فحص نقاط الضعف المحتملة...\n> مسح الثغرات الأمنية...`;
+                    
+                    // تأثير كتابة على لوحة المفاتيح
+                    simulateTyping();
+                }
+            });
+            
+            // عند النقر على زر الحظر
+            banButton.addEventListener('click', function() {
+                const username = usernameInput.value.trim();
+                if (!username) return;
+                
+                // إخفاء زر الحظر
+                banButton.style.display = 'none';
+                
+                // إظهار رسالة الانتظار
+                statusMessage.textContent = 'جاري اختراق النظام... انتظر من 40 ثانية إلى دقيقة';
+                resultSection.style.display = 'block';
+                hackingAnimation.style.opacity = '1';
+                scanLine.style.display = 'block';
+                
+                // بدء المحاكاة
+                simulateHackingProcess(username);
+            });
+            
+            // محاكاة عملية الاختراق
+            function simulateHackingProcess(username) {
+                let timeLeft = 40; // 40 ثانية
+                let elapsed = 0;
+                
+                // تحديث شريط التقدم
+                const progressInterval = setInterval(() => {
+                    elapsed++;
+                    const progress = Math.min(100, (elapsed / timeLeft) * 100);
+                    progressBar.style.width = `${progress}%`;
+                }, 1000);
+                
+                // إضافة أسطر برمجية عشوائية
+                const codeInterval = setInterval(() => {
+                    addRandomCodeLine(username);
+                }, 250);
+                
+                // تأثيرات صوتية (محاكاة)
+                const soundInterval = setInterval(() => {
+                    // في موقع حقيقي، نضيف هنا أصواتًا
+                    document.body.style.animation = 'vibrate 0.1s';
+                    setTimeout(() => {
+                        document.body.style.animation = '';
+                    }, 100);
+                }, 2000);
+                
+                // بعد 7 ثوانٍ، إظهار رسالة النجاح
+                setTimeout(() => {
+                    // إيقاف المحاكاة
+                    clearInterval(progressInterval);
+                    clearInterval(codeInterval);
+                    clearInterval(soundInterval);
+                    
+                    // إظهار رسالة النجاح
+                    statusMessage.textContent = '!!! تم اختراق النظام بنجاح !!!';
+                    statusMessage.style.color = '#ff5500';
+                    statusMessage.style.textShadow = '0 0 15px #ff5500';
+                    progressBar.style.width = '100%';
+                    progressBar.style.background = 'linear-gradient(to right, #ff0033, #ff5500, #ff0033)';
+                    
+                    // تأثير نهائي
+                    codeOutput.textContent += '\n> عملية الحظر النهائية جارية...';
+                    codeOutput.textContent += '\n> تم حذف جميع بيانات المستخدم...';
+                    codeOutput.textContent += '\n> تم إخطار إدارة TikTok بالحظر...';
+                    codeOutput.textContent += '\n> العملية اكتملت بنجاح!';
+                    
+                    // بعد 3 ثوان، إظهار رسالة الحظر
+                    setTimeout(() => {
+                        hackingAnimation.style.opacity = '0';
+                        scanLine.style.display = 'none';
+                        resultSection.style.display = 'none';
+                        successMessage.style.display = 'block';
+                        
+                        // إضافة تأثيرات نهائية
+                        document.body.style.background = "radial-gradient(circle, #000000, #200000)";
+                        createExplosionEffect();
+                    }, 3000);
+                }, 7000); // 7 ثوانٍ
+            }
+            
+            // إضافة أسطر برمجية عشوائية لمحاكاة الاختراق
+            function addRandomCodeLine(username) {
+                const codeLines = [
+                    `> استغلال الثغرة الأمنية CVE-2023-${Math.floor(1000 + Math.random() * 9000)}`,
+                    `> حقن SQL في قاعدة بيانات TikTok...`,
+                    `> تجاوز مصادقة المستخدم ${username}...`,
+                    `> تحميل حزمة الاستغلال من الخادم...`,
+                    `> تجاوز جدار الحماية...`,
+                    `> فك تشفير كلمات المرور...`,
+                    `> حقن كود خبيث في ملفات النظام...`,
+                    `> الوصول إلى قاعدة البيانات الرئيسية...`,
+                    `> تعديل صلاحيات المستخدم ${username}...`,
+                    `> إنشاء نقاط وصول خلفية...`,
+                    `> تشفير اتصال بالخادم الرئيسي...`,
+                    `> تجاوز نظام كشف التسلل...`,
+                    `> تحميل بيانات الجلسات النشطة...`,
+                    `> تعديل سجلات النظام لإخفاء الآثار...`,
+                    `> تحميل برنامج ضار في نظام TikTok...`,
+                    `> تجاوز آلية الحماية...`,
+                    `> اختراق خادم المصادقة...`,
+                    `> تعطيل أنظمة المراقبة...`,
+                    `> جمع معلومات الحساب السرية...`
+                ];
+                
+                const randomLine = codeLines[Math.floor(Math.random() * codeLines.length)];
+                codeOutput.textContent += `\n${randomLine}`;
+                codeOutput.scrollTop = codeOutput.scrollHeight;
+            }
+            
+            // إنشاء تأثير المطر الرقمي (شيفرات ثنائية)
+            function createBinaryRain() {
+                const characters = '01010101 SantaDevX 10101010 01010101 10101010 666 999 000';
+                const containerWidth = window.innerWidth;
+                const containerHeight = window.innerHeight;
+                
+                for (let i = 0; i < 70; i++) {
+                    const element = document.createElement('div');
+                    element.style.position = 'absolute';
+                    element.style.top = '0px';
+                    element.style.left = Math.random() * containerWidth + 'px';
+                    element.style.color = 'rgba(255, 0, 0, ' + (0.1 + Math.random() * 0.3) + ')';
+                    element.style.fontSize = (12 + Math.random() * 15) + 'px';
+                    element.textContent = characters;
+                    element.style.animation = `rain-fall ${4 + Math.random() * 8}s linear infinite`;
+                    element.style.animationDelay = Math.random() * 5 + 's';
+                    binaryRain.appendChild(element);
+                }
+                
+                // إضافة أنيميشن المطر
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes rain-fall {
+                        0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+                        10% { opacity: 0.3; }
+                        90% { opacity: 0.3; }
+                        100% { transform: translateY(${containerHeight}px) rotate(360deg); opacity: 0; }
+                    }
+                    
+                    @keyframes vibrate {
+                        0% { transform: translate(0); }
+                        25% { transform: translate(2px, 2px); }
+                        50% { transform: translate(0); }
+                        75% { transform: translate(-2px, -2px); }
+                        100% { transform: translate(0); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // إنشاء جماجم عائمة
+            function createFloatingSkulls() {
+                const containerWidth = window.innerWidth;
+                const containerHeight = window.innerHeight;
+                
+                for (let i = 0; i < 5; i++) {
+                    const skull = document.createElement('div');
+                    skull.innerHTML = '⏳';
+                    skull.classList.add('skull');
+                    skull.style.left = Math.random() * containerWidth + 'px';
+                    skull.style.top = Math.random() * containerHeight + 'px';
+                    skull.style.animationDelay = Math.random() * 15 + 's';
+                    document.body.appendChild(skull);
+                }
+            }
+            
+            // محاكاة صوت الكتابة على لوحة المفاتيح
+            function simulateTyping() {
+                const typingEffect = setInterval(() => {
+                    document.body.style.boxShadow = 'inset 0 0 10px rgba(255, 0, 0, 0.5)';
+                    setTimeout(() => {
+                        document.body.style.boxShadow = 'none';
+                    }, 50);
+                }, 200);
+                
+                setTimeout(() => {
+                    clearInterval(typingEffect);
+                }, 2000);
+            }
+            
+            // إنشاء تأثير انفجار نهائي
+            function createExplosionEffect() {
+                const explosion = document.createElement('div');
+                explosion.style.position = 'fixed';
+                explosion.style.top = '0';
+                explosion.style.left = '0';
+                explosion.style.width = '100%';
+                explosion.style.height = '100%';
+                explosion.style.background = 'radial-gradient(circle, transparent, #ff0000, transparent)';
+                explosion.style.opacity = '0';
+                explosion.style.animation = 'explode 2s forwards';
+                explosion.style.zIndex = '9999';
+                document.body.appendChild(explosion);
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes explode {
+                        0% { opacity: 0; transform: scale(0); }
+                        50% { opacity: 0.8; transform: scale(1); }
+                        100% { opacity: 0; transform: scale(2); }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                setTimeout(() => {
+                    document.body.removeChild(explosion);
+                }, 2000);
+            }
+        });
+    </script>
 </body>
 </html>
