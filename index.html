@@ -611,7 +611,8 @@
                         friends: []
                     });
 
-                    showNotification("تم إنشاء الحساب بنجاح!");h (error) {
+                    showNotification("تم إنشاء الحساب بنجاح!");
+                } catch (error) {
                 console.error('Registration error:', error);
                 showNotification(error.message || 'حدث خطأ أثناء إنشاء الحساب');
             } finally {
