@@ -441,10 +441,7 @@
             <div class="form-group">
                 <input type="text" id="register-username" placeholder="اسم المستخدم" required>
             </div>
-            <div class="form-group">
-                <input type="file" id="register-profile-pic" accept="image/*">
-                <img id="profile-pic-preview" class="profile-pic-preview hidden" src="" alt="معاينة صورة الملف الشخصي">
-            </div>
+
             <button type="submit" id="register-btn">
                 <span class="btn-text">إنشاء حساب</span>
             </button>
@@ -533,15 +530,13 @@
         const showLoginBtn = document.getElementById('show-login');
         const loginForm = document.getElementById('login-form');
         const registerForm = document.getElementById('register-form');
-        const logoutBtn = document.getElementById('logout-btn');
-        const profilePicInput = document.getElementById('register-profile-pic');
-        const profilePicPreview = document.getElementById('profile-pic-preview');
-        const chatMessages = document.getElementById('chat-messages');
-        const messageInput = document.getElementById('message-input');
-        const sendBtn = document.getElementById('send-btn');
-        const friendsList = document.getElementById('friends-list');
-        const addFriendBtn = document.getElementById('add-friend-btn');
-        const searchInput = document.getElementById('search-input');
+        const logoutBtn = document.getElementById("logout-btn");
+        const chatMessages = document.getElementById("chat-messages");
+        const messageInput = document.getElementById("message-input");
+        const sendBtn = document.getElementById("send-btn");
+        const friendsList = document.getElementById("friends-list");
+        const addFriendBtn = document.getElementById("add-friend-btn");
+        const searchInput = document.getElementById("search-input");
 
         // Utility Functions
         function showLoading(button) {
@@ -584,26 +579,7 @@
             authContainer.classList.remove('hidden');
         });
 
-        profilePicInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                if (file.size > 5 * 1024 * 1024) { // 5MB limit
-                    showNotification('حجم الصورة كبير جداً. يرجى اختيار صورة أصغر من 5 ميجابايت.');
-                    profilePicInput.value = '';
-                    return;
-                }
-                
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    profilePicPreview.src = e.target.result;
-                    profilePicPreview.classList.remove('hidden');
-                };
-                reader.readAsDataURL(file);
-            } else {
-                profilePicPreview.classList.add('hidden');
-                profilePicPreview.src = '';
-            }
-        });
+
 
         // Authentication Functions
         registerForm.addEventListener('submit', async (e) => {
@@ -612,41 +588,30 @@
             showLoading(registerBtn);
 
             const email = document.getElementById('register-email').value;
-            const password = document.getElementById('register-password').value;
-            const username = document.getElementById('register-username').value;
-            const profilePicFile = document.getElementById('register-profile-pic').files[0];
+                         const username = document.getElementById("register-username").value;
 
-            try {
-                // Check if username already exists
-                const usernameQuery = await db.collection('users').where('username', '==', username).get();
-                if (!usernameQuery.empty) {
-                    throw new Error('اسم المستخدم موجود بالفعل. يرجى اختيار اسم آخر.');
-                }
+                try {
+                    // Check if username already exists
+                    const usernameQuery = await db.collection("users").where("username", "==", username).get();
+                    if (!usernameQuery.empty) {
+                        throw new Error("اسم المستخدم موجود بالفعل. يرجى اختيار اسم آخر.");
+                    }
 
-                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-                const user = userCredential.user;
+                    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                    const user = userCredential.user;
 
-                let photoURL = '';
-                if (profilePicFile) {
-                    const storageRef = storage.ref(`profile_pictures/${user.uid}/${Date.now()}_${profilePicFile.name}`);
-                    const uploadTask = await storageRef.put(profilePicFile);
-                    photoURL = await uploadTask.ref.getDownloadURL();
-                }
+                    // Save user data to Firestore
+                    await db.collection("users").doc(user.uid).set({
+                        uid: user.uid,
+                        email: email,
+                        username: username,
+                        photoURL: "", // No photo URL since feature is disabled
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
+                        friends: []
+                    });
 
-                // Save user data to Firestore
-                await db.collection('users').doc(user.uid).set({
-                    uid: user.uid,
-                    email: email,
-                    username: username,
-                    photoURL: photoURL,
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                    lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
-                    friends: []
-                });
-
-                showNotification('تم إنشاء الحساب بنجاح!');
-                
-            } catch (error) {
+                    showNotification("تم إنشاء الحساب بنجاح!");h (error) {
                 console.error('Registration error:', error);
                 showNotification(error.message || 'حدث خطأ أثناء إنشاء الحساب');
             } finally {
