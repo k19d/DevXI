@@ -1,940 +1,575 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تطبيق المراسلة</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>sxxxxif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Courier New', monospace;
         }
-
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000000 0%, #001100 50%, #000000 100%);
+            color: #00ff00;
             min-height: 100vh;
+            overflow-x: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #333;
+            position: relative;
+            padding: 20px;
         }
-
+        
+        /* Matrix-style background animation */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .matrix-char {
+            position: absolute;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            animation: matrix-fall linear infinite;
+        }
+        
+        @keyframes matrix-fall {
+            0% { transform: translateY(-100vh); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        
         .container {
-            background: rgba(255, 255, 255, 0.95);
+            width: 95%;
+            max-width: 1400px;
+            border: 3px solid #00ff00;
+            border-radius: 15px;
+            padding: 40px;
+            background: rgba(0, 30, 0, 0.95);
+            box-shadow: 
+                0 0 30px #00ff00,
+                inset 0 0 20px rgba(0, 255, 0, 0.1);
+            position: relative;
+            overflow: hidden;
             backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            width: 90%;
-            max-width: 400px;
+            animation: container-glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes container-glow {
+            0% { box-shadow: 0 0 30px #00ff00, inset 0 0 20px rgba(0, 255, 0, 0.1); }
+            100% { box-shadow: 0 0 50px #00ff00, inset 0 0 30px rgba(0, 255, 0, 0.2); }
+        }
+        
+        .header {
             text-align: center;
-            padding: 40px 30px;
-            transition: all 0.3s ease;
-        }
-
-        .container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        h1 {
-            color: #667eea;
-            margin-bottom: 30px;
-            font-size: 32px;
-            font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-bottom: 2px solid #00ff00;
             position: relative;
-            margin-bottom: 25px;
         }
-
-        input[type="email"],
-        input[type="password"],
-        input[type="text"] {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e1e5e9;
-            border-radius: 12px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.9);
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff00, transparent);
+            animation: header-line 2s ease-in-out infinite;
         }
-
-        input[type="email"]:focus,
-        input[type="password"]:focus,
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-            transform: translateY(-2px);
+        
+        @keyframes header-line {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
-
-        input[type="file"] {
-            width: 100%;
-            padding: 12px;
-            border: 2px dashed #667eea;
-            border-radius: 12px;
-            font-size: 14px;
-            background: rgba(102, 126, 234, 0.05);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        input[type="file"]:hover {
-            background: rgba(102, 126, 234, 0.1);
-            border-color: #5a67d8;
-        }
-
-        button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 17px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        .switch-form {
-            margin-top: 25px;
-            font-size: 15px;
-            color: #666;
-        }
-
-        .switch-form a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .switch-form a:hover {
-            color: #5a67d8;
-        }
-
-        .profile-pic-preview {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 20px auto;
-            border: 4px solid #667eea;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .profile-pic-preview:hover {
-            transform: scale(1.05);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* Chat Styles */
-        .chat-container {
-            width: 100%;
+        
+        .header img {
             max-width: 800px;
-            height: 600px;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chat-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .chat-header h2 {
-            font-size: 20px;
-            font-weight: 600;
-        }
-
-        .logout-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            width: auto;
-            transition: all 0.3s ease;
-        }
-
-        .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .chat-sidebar {
-            width: 300px;
-            background: #f8f9fa;
-            border-left: 1px solid #e9ecef;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .friends-section {
-            padding: 20px;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .add-friend-btn {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            margin-bottom: 15px;
-            font-size: 14px;
-            padding: 10px 15px;
-        }
-
-        .search-input {
             width: 100%;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-            margin-bottom: 10px;
+            margin-bottom: 25px;
+            border: 4px solid #00ff00;
+            border-radius: 15px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 25px #00ff00);
+            animation: image-pulse 4s ease-in-out infinite;
         }
-
-        .friends-list {
-            flex-grow: 1;
+        
+        @keyframes image-pulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 25px #00ff00); }
+            50% { transform: scale(1.03); filter: drop-shadow(0 0 35px #00ff00); }
+        }
+        
+        .header img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 60px #00ff00;
+            filter: drop-shadow(0 0 60px #00ff00);
+        }
+        
+        .header h1 {
+            font-size: clamp(24px, 5vw, 40px);
+            text-shadow: 
+                0 0 10px #00ff00,
+                0 0 20px #00ff00,
+                0 0 30px #00ff00;
+            letter-spacing: 3px;
+            animation: title-glow 2s ease-in-out infinite alternate;
+            margin-bottom: 15px;
+        }
+        
+        @keyframes title-glow {
+            0% { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; }
+            100% { text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; }
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: rgba(0, 255, 0, 0.2);
+            border: 1px solid #00ff00;
+            border-radius: 20px;
+            padding: 8px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            animation: badge-blink 3s ease-in-out infinite;
+        }
+        
+        @keyframes badge-blink {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        .terminal {
+            background: linear-gradient(135deg, #001100 0%, #002200 100%);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            height: 280px;
             overflow-y: auto;
-            padding: 0 20px;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.1);
         }
-
-        .friend-item {
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-bottom: 5px;
+        
+        .terminal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(180deg, rgba(0, 255, 0, 0.1) 0%, transparent 100%);
+            pointer-events: none;
         }
-
-        .friend-item:hover {
-            background-color: #e9ecef;
+        
+        .terminal-line {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            animation: terminal-text 0.5s ease-in;
+            position: relative;
+            font-size: 16px;
         }
-
-        .friend-item.active {
-            background-color: #667eea;
-            color: white;
-        }
-
-        .friend-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-left: 12px;
-            background: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        
+        .terminal-line::before {
+            content: '>';
+            color: #00cc00;
+            margin-right: 10px;
             font-weight: bold;
         }
-
-        .chat-main {
-            flex-grow: 1;
+        
+        @keyframes terminal-text {
+            0% { opacity: 0; transform: translateX(-10px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        
+        .input-group {
             display: flex;
-            flex-direction: column;
+            margin-bottom: 30px;
+            gap: 0;
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
         }
-
-        .chat-messages {
-            flex-grow: 1;
-            padding: 20px;
-            overflow-y: auto;
-            background: linear-gradient(to bottom, #e3f2fd 0%, #f3e5f5 100%);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .message {
-            margin-bottom: 15px;
-            padding: 12px 16px;
-            border-radius: 18px;
-            max-width: 70%;
-            word-wrap: break-word;
-            position: relative;
-            animation: messageSlide 0.3s ease;
-        }
-
-        @keyframes messageSlide {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .message.sent {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 4px;
-        }
-
-        .message.received {
-            background: white;
-            color: #333;
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .message-info {
-            font-size: 12px;
-            opacity: 0.7;
-            margin-bottom: 5px;
-        }
-
-        .message-text {
-            font-size: 15px;
-            line-height: 1.4;
-        }
-
-        .chat-input-container {
-            padding: 20px;
-            background: white;
-            border-top: 1px solid #e9ecef;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .chat-input {
-            flex-grow: 1;
-            padding: 12px 16px;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            font-size: 15px;
+        
+        .input-group input {
+            flex: 1;
+            padding: 18px 25px;
+            background: linear-gradient(135deg, #001100 0%, #002200 100%);
+            border: 2px solid #00ff00;
+            border-right: none;
+            color: #00ff00;
+            font-size: 20px;
             outline: none;
             transition: all 0.3s ease;
         }
-
-        .chat-input:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        
+        .input-group input:focus {
+            background: rgba(0, 255, 0, 0.05);
+            box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.2);
         }
-
-        .send-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            color: white;
+        
+        .input-group button {
+            padding: 18px 30px;
+            background: linear-gradient(135deg, #003300 0%, #004400 100%);
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            border-left: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
             font-size: 18px;
+        }
+        
+        .input-group button:hover {
+            background: linear-gradient(135deg, #00cc00 0%, #00ff00 100%);
+            color: #000;
+            text-shadow: 0 0 5px #000;
+            transform: translateY(-2px);
+        }
+        
+        .bot-access {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .bot-btn {
+            padding: 25px 60px;
+            background: linear-gradient(135deg, #004400 0%, #006600 100%);
+            color: #00ff00;
+            border: 3px solid #00ff00;
+            border-radius: 12px;
+            font-size: 26px;
+            font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            text-shadow: 0 0 15px #00ff00;
+            letter-spacing: 4px;
+            position: relative;
+            overflow: hidden;
         }
-
-        .send-btn:hover {
-            transform: scale(1.1);
+        
+        .bot-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
         }
-
-        .welcome-message {
+        
+        .bot-btn:hover::before {
+            left: 100%;
+        }
+        
+        .bot-btn:hover {
+            background: linear-gradient(135deg, #00ff00 0%, #00cc00 100%);
+            color: #000;
+            box-shadow: 
+                0 0 40px #00ff00,
+                0 8px 20px rgba(0, 255, 0, 0.3);
+            transform: translateY(-4px);
+        }
+        
+        .output {
+            background: linear-gradient(135deg, #001100 0%, #002200 100%);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 25px;
+            min-height: 100px;
+            font-size: 20px;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.1);
+        }
+        
+        .output::before {
+            content: '>';
+            color: #00cc00;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .scanning-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 0%, rgba(0, 255, 0, 0.2) 50%, transparent 100%);
+            animation: scan 2s linear infinite;
+            pointer-events: none;
+            display: none;
+            z-index: 10;
+        }
+        
+        @keyframes scan {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+        
+        .footer {
             text-align: center;
-            color: #666;
+            margin-top: 40px;
+            padding: 25px;
+            border-top: 2px solid #00ff00;
             font-size: 16px;
-            margin-top: 50px;
+            color: #009900;
+            position: relative;
         }
-
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff00, transparent);
+        }
+        
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .header img {
+                max-width: 700px;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .chat-container {
-                width: 95%;
-                height: 90vh;
+            .container {
+                padding: 25px;
+                margin: 10px;
             }
             
-            .chat-sidebar {
-                width: 100%;
-                position: absolute;
-                z-index: 10;
-                height: 100%;
-                transform: translateX(-100%);
-                transition: transform 0.3s ease;
+            .header img {
+                max-width: 600px;
             }
             
-            .chat-sidebar.show {
-                transform: translateX(0);
+            .bot-btn {
+                padding: 20px 40px;
+                font-size: 20px;
+                letter-spacing: 3px;
+            }
+            
+            .input-group input,
+            .input-group button {
+                padding: 15px 20px;
+                font-size: 18px;
             }
         }
-
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
+        
+        @media (max-width: 480px) {
+            .header img {
+                max-width: 450px;
+            }
+            
+            .terminal {
+                height: 220px;
+                padding: 20px;
+            }
+            
+            .bot-btn {
+                padding: 15px 30px;
+                font-size: 18px;
+                letter-spacing: 2px;
+            }
+            
+            .output {
+                font-size: 18px;
+                padding: 20px;
+            }
         }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        
+        @media (max-width: 360px) {
+            .header img {
+                max-width: 350px;
+            }
+        }
+        
+        /* Loading animation */
+        .loading-dots::after {
+            content: '';
+            animation: loading-dots 1.5s infinite;
+        }
+        
+        @keyframes loading-dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
         }
     </style>
 </head>
 <body>
-    <!-- Login Form -->
-    <div class="container" id="auth-container">
-        <h1><i class="fas fa-comments"></i> تطبيق المراسلة</h1>
-        <form id="login-form">
-            <div class="form-group">
-                <input type="email" id="login-email" placeholder="البريد الإلكتروني" required>
-            </div>
-            <div class="form-group">
-                <input type="password" id="login-password" placeholder="كلمة المرور" required>
-            </div>
-            <button type="submit" id="login-btn">
-                <span class="btn-text">تسجيل الدخول</span>
-            </button>
-        </form>
-        <div class="switch-form">
-            ليس لديك حساب؟ <a href="#" id="show-register">إنشاء حساب جديد</a>
+    <div class="matrix-bg" id="matrixBg"></div>
+    
+    <div class="container">
+        <div class="scanning-animation" id="scanner"></div>
+        
+        <div class="header">
+            <img src="https://i.postimg.cc/4m7mbzqW/image.png" alt="System Logo">
+            <h1>OFAA BOT ACCESS</h1>
+            <div class="version-badge">V1</div>
         </div>
-    </div>
-
-    <!-- Register Form -->
-    <div class="container hidden" id="register-container">
-        <h1><i class="fas fa-user-plus"></i> إنشاء حساب جديد</h1>
-        <form id="register-form">
-            <div class="form-group">
-                <input type="email" id="register-email" placeholder="البريد الإلكتروني" required>
-            </div>
-            <div class="form-group">
-                <input type="password" id="register-password" placeholder="كلمة المرور (6 أحرف على الأقل)" required minlength="6">
-            </div>
-            <div class="form-group">
-                <input type="text" id="register-username" placeholder="اسم المستخدم" required>
-            </div>
-
-            <button type="submit" id="register-btn">
-                <span class="btn-text">إنشاء حساب</span>
-            </button>
-        </form>
-        <div class="switch-form">
-            لديك حساب بالفعل؟ <a href="#" id="show-login">تسجيل الدخول</a>
+        
+        <div class="terminal" id="terminal">
+            <div class="terminal-line">نظام VOLT جاهز للتشغيل...</div>
+            <div class="terminal-line">تهيئة وحدات النظام...</div>
+            <div class="terminal-line">تحميل وحدة الاتصال بالبوت...</div>
+            <div class="terminal-line">النظام جاهز للاستقبال</div>
+            <div class="terminal-line">الرجاء إدخال رقم الهاتف ثم الضغط على BOT ACCESS</div>
         </div>
-    </div>
-
-    <!-- Chat Interface -->
-    <div class="chat-container hidden" id="chat-container">
-        <div class="chat-header">
-            <h2><i class="fas fa-comments"></i> المحادثات</h2>
-            <button class="logout-btn" id="logout-btn">
-                <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+        
+        <div class="input-group">
+            <input type="tel" id="phone" placeholder="أدخل رقم الهاتف مع رمز الدولة...">
+            <button onclick="clearPhone()"><i class="fas fa-trash"></i> DEL</button>
+        </div>
+        
+        <div class="bot-access">
+            <button class="bot-btn" onclick="initiateBot()">
+                <i class="fas fa-robot"></i> BOT ACCESS
             </button>
         </div>
         
-        <div style="display: flex; flex-grow: 1;">
-            <div class="chat-sidebar" id="chat-sidebar">
-                <div class="friends-section">
-                    <button class="add-friend-btn" id="add-friend-btn">
-                        <i class="fas fa-user-plus"></i> إضافة صديق
-                    </button>
-                    <input type="text" class="search-input" id="search-input" placeholder="البحث عن صديق...">
-                </div>
-                <div class="friends-list" id="friends-list">
-                    <!-- Friends will be loaded here -->
-                </div>
-            </div>
-            
-            <div class="chat-main">
-                <div class="chat-messages" id="chat-messages">
-                    <div class="welcome-message">
-                        <i class="fas fa-comments" style="font-size: 48px; color: #667eea; margin-bottom: 20px;"></i>
-                        <h3>مرحباً بك في تطبيق المراسلة!</h3>
-                        <p>اختر صديقاً من القائمة لبدء المحادثة</p>
-                    </div>
-                </div>
-                
-                <div class="chat-input-container">
-                    <input type="text" class="chat-input" id="message-input" placeholder="اكتب رسالتك هنا..." disabled>
-                    <button class="send-btn" id="send-btn" disabled>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-            </div>
+        <div class="output" id="output">
+            في انتظار الإدخال...
+        </div>
+        
+        <div class="footer">
+            <p><i class="fas fa-shield-alt"></i> © sxxxxif  &  devx.community </p>
+            <p><i class="fas fa-copyright"></i> جميع الحقوق محفوظة 2025</p>
         </div>
     </div>
 
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-storage-compat.js"></script>
-
     <script>
-        // Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyDya5BdahNHyIb8jmcYyzcuAEuUtqXXLP0",
-            authDomain: "santa-20908.firebaseapp.com",
-            projectId: "santa-20908",
-            storageBucket: "santa-20908.firebasestorage.app",
-            messagingSenderId: "21025783432",
-            appId: "1:21025783432:web:d4d6c8a1efcea9d9e1e93d",
-            measurementId: "G-S4QCP33BPG"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-        const storage = firebase.storage();
-
-        // Global Variables
-        let currentUser = null;
-        let currentChatId = null;
-        let currentChatUser = null;
-        let messagesListener = null;
-
-        // DOM Elements
-        const authContainer = document.getElementById('auth-container');
-        const registerContainer = document.getElementById('register-container');
-        const chatContainer = document.getElementById('chat-container');
-        const showRegisterBtn = document.getElementById('show-register');
-        const showLoginBtn = document.getElementById('show-login');
-        const loginForm = document.getElementById('login-form');
-        const registerForm = document.getElementById('register-form');
-        const logoutBtn = document.getElementById("logout-btn");
-        const chatMessages = document.getElementById("chat-messages");
-        const messageInput = document.getElementById("message-input");
-        const sendBtn = document.getElementById("send-btn");
-        const friendsList = document.getElementById("friends-list");
-        const addFriendBtn = document.getElementById("add-friend-btn");
-        const searchInput = document.getElementById("search-input");
-
-        // Utility Functions
-        function showLoading(button) {
-            const btnText = button.querySelector('.btn-text');
-            btnText.innerHTML = '<span class="loading"></span>';
-            button.disabled = true;
-        }
-
-        function hideLoading(button, originalText) {
-            const btnText = button.querySelector('.btn-text');
-            btnText.textContent = originalText;
-            button.disabled = false;
-        }
-
-        function showNotification(message, type = 'info') {
-            // Simple alert for now - can be enhanced with custom notifications
-            alert(message);
-        }
-
-        function formatTime(timestamp) {
-            if (!timestamp) return '';
-            const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-            return date.toLocaleTimeString('ar-SA', { 
-                hour: '2-digit', 
-                minute: '2-digit',
-                hour12: true 
-            });
-        }
-
-        // Event Listeners
-        showRegisterBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            authContainer.classList.add('hidden');
-            registerContainer.classList.remove('hidden');
-        });
-
-        showLoginBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            registerContainer.classList.add('hidden');
-            authContainer.classList.remove('hidden');
-        });
-
-
-
-        // Authentication Functions
-        registerForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const registerBtn = document.getElementById('register-btn');
-            showLoading(registerBtn);
-
-            const email = document.getElementById('register-email').value;
-                         const username = document.getElementById("register-username").value;
-
-                try {
-                    // Check if username already exists
-                    const usernameQuery = await db.collection("users").where("username", "==", username).get();
-                    if (!usernameQuery.empty) {
-                        throw new Error("اسم المستخدم موجود بالفعل. يرجى اختيار اسم آخر.");
-                    }
-
-                    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-                    const user = userCredential.user;
-
-                    // Save user data to Firestore
-                    await db.collection("users").doc(user.uid).set({
-                        uid: user.uid,
-                        email: email,
-                        username: username,
-                        photoURL: "", // No photo URL since feature is disabled
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                        lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
-                        friends: []
-                    });
-
-                    showNotification("تم إنشاء الحساب بنجاح!");
-                } catch (error) {
-                console.error('Registration error:', error);
-                showNotification(error.message || 'حدث خطأ أثناء إنشاء الحساب');
-            } finally {
-                hideLoading(registerBtn, 'إنشاء حساب');
-            }
-        });
-
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const loginBtn = document.getElementById('login-btn');
-            showLoading(loginBtn);
-
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-
-            try {
-                await auth.signInWithEmailAndPassword(email, password);
-                showNotification('تم تسجيل الدخول بنجاح!');
-            } catch (error) {
-                console.error('Login error:', error);
-                showNotification(error.message || 'حدث خطأ أثناء تسجيل الدخول');
-            } finally {
-                hideLoading(loginBtn, 'تسجيل الدخول');
-            }
-        });
-
-        logoutBtn.addEventListener('click', async () => {
-            try {
-                if (currentUser) {
-                    await db.collection('users').doc(currentUser.uid).update({
-                        lastSeen: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-                }
-                await auth.signOut();
-                showNotification('تم تسجيل الخروج بنجاح');
-            } catch (error) {
-                console.error('Logout error:', error);
-                showNotification('حدث خطأ أثناء تسجيل الخروج');
-            }
-        });
-
-        // Authentication State Observer
-        auth.onAuthStateChanged(async (user) => {
-            if (user) {
-                currentUser = user;
-                
-                // Update user's last seen
-                try {
-                    await db.collection('users').doc(user.uid).update({
-                        lastSeen: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-                } catch (error) {
-                    console.error('Error updating last seen:', error);
-                }
-
-                // Show chat interface
-                authContainer.classList.add('hidden');
-                registerContainer.classList.add('hidden');
-                chatContainer.classList.remove('hidden');
-                
-                // Load friends
-                loadFriends();
-                
-            } else {
-                currentUser = null;
-                currentChatId = null;
-                currentChatUser = null;
-                
-                // Clear any active listeners
-                if (messagesListener) {
-                    messagesListener();
-                    messagesListener = null;
-                }
-                
-                // Show auth interface
-                chatContainer.classList.add('hidden');
-                authContainer.classList.remove('hidden');
-                registerContainer.classList.add('hidden');
-            }
-        });
-
-        // Friends Management
-        async function loadFriends() {
-            if (!currentUser) return;
-
-            try {
-                const userDoc = await db.collection('users').doc(currentUser.uid).get();
-                const userData = userDoc.data();
-                const friendIds = userData.friends || [];
-
-                friendsList.innerHTML = '';
-
-                if (friendIds.length === 0) {
-                    friendsList.innerHTML = '<div style="text-align: center; padding: 20px; color: #666;">لا توجد أصدقاء بعد<br>ابدأ بإضافة أصدقاء جدد!</div>';
-                    return;
-                }
-
-                for (const friendId of friendIds) {
-                    const friendDoc = await db.collection('users').doc(friendId).get();
-                    if (friendDoc.exists) {
-                        const friendData = friendDoc.data();
-                        addFriendToList(friendData);
-                    }
-                }
-            } catch (error) {
-                console.error('Error loading friends:', error);
-                showNotification('حدث خطأ أثناء تحميل قائمة الأصدقاء');
+        // Matrix background animation
+        function createMatrixEffect() {
+            const matrixBg = document.getElementById('matrixBg');
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            
+            for (let i = 0; i < 50; i++) {
+                const char = document.createElement('div');
+                char.className = 'matrix-char';
+                char.textContent = chars[Math.floor(Math.random() * chars.length)];
+                char.style.left = Math.random() * 100 + '%';
+                char.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                char.style.animationDelay = Math.random() * 2 + 's';
+                matrixBg.appendChild(char);
             }
         }
-
-        function addFriendToList(friendData) {
-            const friendItem = document.createElement('div');
-            friendItem.className = 'friend-item';
-            friendItem.dataset.userId = friendData.uid;
-            
-            const avatar = document.createElement('div');
-            avatar.className = 'friend-avatar';
-            
-            if (friendData.photoURL) {
-                const img = document.createElement('img');
-                img.src = friendData.photoURL;
-                img.style.width = '100%';
-                img.style.height = '100%';
-                img.style.borderRadius = '50%';
-                img.style.objectFit = 'cover';
-                avatar.appendChild(img);
-            } else {
-                avatar.textContent = friendData.username.charAt(0).toUpperCase();
-            }
-            
-            const friendInfo = document.createElement('div');
-            friendInfo.innerHTML = `
-                <div style="font-weight: 600;">${friendData.username}</div>
-                <div style="font-size: 12px; color: #666;">انقر للمحادثة</div>
-            `;
-            
-            friendItem.appendChild(avatar);
-            friendItem.appendChild(friendInfo);
-            
-            friendItem.addEventListener('click', () => {
-                selectFriend(friendData);
-            });
-            
-            friendsList.appendChild(friendItem);
+        
+        // Terminal effects
+        const terminal = document.getElementById('terminal');
+        const output = document.getElementById('output');
+        const scanner = document.getElementById('scanner');
+        
+        // Add new lines to terminal
+        function addTerminalLine(text, delay) {
+            setTimeout(() => {
+                const line = document.createElement('div');
+                line.className = 'terminal-line';
+                line.textContent = text;
+                terminal.appendChild(line);
+                terminal.scrollTop = terminal.scrollHeight;
+            }, delay);
         }
-
-        function selectFriend(friendData) {
-            // Remove active class from all friends
-            document.querySelectorAll('.friend-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Add active class to selected friend
-            const selectedItem = document.querySelector(`[data-user-id="${friendData.uid}"]`);
-            if (selectedItem) {
-                selectedItem.classList.add('active');
-            }
-            
-            currentChatUser = friendData;
-            loadChat(friendData);
-            
-            // Enable message input
-            messageInput.disabled = false;
-            sendBtn.disabled = false;
-            messageInput.placeholder = `اكتب رسالة إلى ${friendData.username}...`;
-        }
-
-        // Chat Functions
-        async function loadChat(friendData) {
-            if (!currentUser || !friendData) return;
-
-            // Clear previous messages listener
-            if (messagesListener) {
-                messagesListener();
-            }
-
-            // Create or get chat ID
-            const chatId = createChatId(currentUser.uid, friendData.uid);
-            currentChatId = chatId;
-
-            // Clear messages container
-            chatMessages.innerHTML = '';
-
-            // Listen for messages in real-time
-            messagesListener = db.collection('messages')
-                .where('chatId', '==', chatId)
-                .orderBy('timestamp', 'asc')
-                .onSnapshot((snapshot) => {
-                    chatMessages.innerHTML = '';
-                    
-                    snapshot.forEach((doc) => {
-                        const messageData = doc.data();
-                        displayMessage(messageData);
-                    });
-                    
-                    // Scroll to bottom
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }, (error) => {
-                    console.error('Error listening to messages:', error);
-                    showNotification('حدث خطأ أثناء تحميل الرسائل');
-                });
-        }
-
-        function createChatId(uid1, uid2) {
-            return uid1 < uid2 ? `${uid1}_${uid2}` : `${uid2}_${uid1}`;
-        }
-
-        function displayMessage(messageData) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${messageData.senderId === currentUser.uid ? 'sent' : 'received'}`;
-            
-            const messageInfo = document.createElement('div');
-            messageInfo.className = 'message-info';
-            messageInfo.textContent = formatTime(messageData.timestamp);
-            
-            const messageText = document.createElement('div');
-            messageText.className = 'message-text';
-            messageText.textContent = messageData.text;
-            
-            messageDiv.appendChild(messageInfo);
-            messageDiv.appendChild(messageText);
-            
-            chatMessages.appendChild(messageDiv);
-        }
-
-        // Send Message
-        async function sendMessage() {
-            if (!currentUser || !currentChatUser || !currentChatId) return;
-            
-            const messageText = messageInput.value.trim();
-            if (!messageText) return;
-
-            try {
-                await db.collection('messages').add({
-                    chatId: currentChatId,
-                    senderId: currentUser.uid,
-                    receiverId: currentChatUser.uid,
-                    text: messageText,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                });
-
-                messageInput.value = '';
-            } catch (error) {
-                console.error('Error sending message:', error);
-                showNotification('حدث خطأ أثناء إرسال الرسالة');
-            }
-        }
-
-        sendBtn.addEventListener('click', sendMessage);
-        messageInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-        // Add Friend Functionality
-        addFriendBtn.addEventListener('click', async () => {
-            const username = prompt('أدخل اسم المستخدم للصديق الذي تريد إضافته:');
-            if (!username) return;
-
-            try {
-                // Search for user by username
-                const userQuery = await db.collection('users').where('username', '==', username).get();
-                
-                if (userQuery.empty) {
-                    showNotification('لم يتم العثور على مستخدم بهذا الاسم');
-                    return;
-                }
-
-                const friendDoc = userQuery.docs[0];
-                const friendData = friendDoc.data();
-
-                if (friendData.uid === currentUser.uid) {
-                    showNotification('لا يمكنك إضافة نفسك كصديق');
-                    return;
-                }
-
-                // Check if already friends
-                const currentUserDoc = await db.collection('users').doc(currentUser.uid).get();
-                const currentUserData = currentUserDoc.data();
-                const currentFriends = currentUserData.friends || [];
-
-                if (currentFriends.includes(friendData.uid)) {
-                    showNotification('هذا المستخدم موجود في قائمة أصدقائك بالفعل');
-                    return;
-                }
-
-                // Add friend to both users
-                await db.collection('users').doc(currentUser.uid).update({
-                    friends: firebase.firestore.FieldValue.arrayUnion(friendData.uid)
-                });
-
-                await db.collection('users').doc(friendData.uid).update({
-                    friends: firebase.firestore.FieldValue.arrayUnion(currentUser.uid)
-                });
-
-                showNotification(`تم إضافة ${friendData.username} إلى قائمة أصدقائك!`);
-                loadFriends(); // Reload friends list
-
-            } catch (error) {
-                console.error('Error adding friend:', error);
-                showNotification('حدث خطأ أثناء إضافة الصديق');
-            }
-        });
-
-        // Search Friends
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const friendItems = document.querySelectorAll('.friend-item');
-            
-            friendItems.forEach(item => {
-                const username = item.querySelector('div > div').textContent.toLowerCase();
-                if (username.includes(searchTerm)) {
-                    item.style.display = 'flex';
+        
+        // Typing effect
+        function typeEffect(element, text, speed) {
+            let i = 0;
+            element.innerHTML = "";
+            const timer = setInterval(() => {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
                 } else {
-                    item.style.display = 'none';
+                    clearInterval(timer);
                 }
-            });
+            }, speed);
+        }
+        
+        // Clear phone input
+        function clearPhone() {
+            document.getElementById('phone').value = '';
+            typeEffect(output, "تم مسح رقم الهاتف", 50);
+        }
+        
+        // Bot initiation
+        function initiateBot() {
+            const phone = document.getElementById('phone').value;
+            if (!phone) {
+                typeEffect(output, "خطأ: الرجاء إدخال رقم هاتف صحيح", 50);
+                return;
+            }
+            
+            // Show scanning effect
+            scanner.style.display = 'block';
+            
+            // Simulate scanning process
+            typeEffect(output, "بدء اتصال البوت<span class='loading-dots'></span>", 50);
+            
+            setTimeout(() => {
+                addTerminalLine("بدء الاتصال بالبوت...", 100);
+                typeEffect(output, "جاري التحقق من الرقم<span class='loading-dots'></span>", 50);
+            }, 1500);
+            
+            setTimeout(() => {
+                addTerminalLine("الرقم المحدد: " + phone, 100);
+                typeEffect(output, "جاري إنشاء رسالة .addprem /<span class='loading-dots'></span>", 50);
+            }, 3000);
+            
+            setTimeout(() => {
+                addTerminalLine("إرسال رسالة .addprem / إلى الرقم: " + phone, 100);
+                typeEffect(output, "جاري التحويل إلى واتساب<span class='loading-dots'></span>", 50);
+            }, 4500);
+            
+            setTimeout(() => {
+                scanner.style.display = 'none';
+                addTerminalLine("الاتصال جاهز، جاري التحويل...", 100);
+                
+                // Create WhatsApp link
+                const message = ".addprem /";
+                const whatsappUrl = `https://wa.me/201500461923?text=${encodeURIComponent(message + " " + phone)}`;
+                
+                typeEffect(output, "تم التحضير بنجاح! جاري فتح واتساب...", 30);
+                
+                // Open WhatsApp after short delay
+                setTimeout(() => {
+                    window.open(whatsappUrl, '_blank');
+                }, 2000);
+            }, 6000);
+        }
+        
+        // Initialize on load
+        window.onload = function() {
+            createMatrixEffect();
+            
+            setTimeout(() => {
+                addTerminalLine("اتصال الشبكة مثبت", 1000);
+                addTerminalLine("وحدة الأمان مفعلة", 2000);
+                addTerminalLine("النظام جاهز للتشغيل", 3000);
+            }, 1000);
+        };
+        
+        // Add keyboard support
+        document.getElementById('phone').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                initiateBot();
+            }
         });
-
-        // Initialize app
-        console.log('تطبيق المراسلة جاهز للاستخدام!');
     </script>
 </body>
 </html>
