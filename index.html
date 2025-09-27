@@ -44,6 +44,13 @@
             line-height: 1.6;
         }
         
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
         .download-btn {
             display: inline-block;
             background: linear-gradient(to right, #ff8a00, #da1b60);
@@ -57,6 +64,23 @@
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
+            width: 100%;
+        }
+        
+        .menu-btn {
+            display: inline-block;
+            background: linear-gradient(to right, #1a2a6c, #4a6fc1);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(26, 42, 108, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            width: 100%;
         }
         
         .download-btn:hover {
@@ -64,7 +88,12 @@
             box-shadow: 0 8px 20px rgba(218, 27, 96, 0.6);
         }
         
-        .download-btn:active {
+        .menu-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 42, 108, 0.6);
+        }
+        
+        .download-btn:active, .menu-btn:active {
             transform: translateY(1px);
         }
         
@@ -85,23 +114,41 @@
     <div class="container">
         <div class="icon">⬇️</div>
         <h1>تحميل التطبيق</h1>
-        <p>انقر على الزر أدناه للانتقال إلى صفحة تحميل التطبيق. سيتم توجيهك إلى الرابط المطلوب تلقائيًا.</p>
+        <p>اختر أحد الخيارات أدناه للانتقال إلى صفحة التحميل. سيتم توجيهك إلى الرابط المطلوب تلقائيًا.</p>
         
-        <button class="download-btn" onclick="window.location.href='https://www.mediafire.com/file/wquc4kg1dxxrhwi/only_test_head_body_-_zinx%25282%2529.lua/file'">
-            اضغط للتحميل
-        </button>
+        <div class="buttons-container">
+            <button class="download-btn" onclick="window.location.href='https://www.mediafire.com/file/wquc4kg1dxxrhwi/only_test_head_body_-_zinx%25282%2529.lua/file'">
+                اضغط للتحميل
+            </button>
+            
+            <button class="menu-btn" onclick="window.location.href='https://www.mediafire.com/file/fzn4wyal9azn5pg/cracked_by_zinx_%252C%2523%2523.lua/file'">
+                Menu
+            </button>
+        </div>
         
         <p class="note">ملاحظة: سيتم فتح الرابط في نافذة جديدة</p>
     </div>
 
     <script>
-        // إضافة تأثيرات إضافية للزر
-        document.querySelector('.download-btn').addEventListener('mouseover', function() {
-            this.style.background = 'linear-gradient(to right, #da1b60, #ff8a00)';
-        });
+        // إضافة تأثيرات إضافية للأزرار
+        const buttons = document.querySelectorAll('.download-btn, .menu-btn');
         
-        document.querySelector('.download-btn').addEventListener('mouseout', function() {
-            this.style.background = 'linear-gradient(to right, #ff8a00, #da1b60)';
+        buttons.forEach(button => {
+            button.addEventListener('mouseover', function() {
+                if(this.classList.contains('download-btn')) {
+                    this.style.background = 'linear-gradient(to right, #da1b60, #ff8a00)';
+                } else if(this.classList.contains('menu-btn')) {
+                    this.style.background = 'linear-gradient(to right, #4a6fc1, #1a2a6c)';
+                }
+            });
+            
+            button.addEventListener('mouseout', function() {
+                if(this.classList.contains('download-btn')) {
+                    this.style.background = 'linear-gradient(to right, #ff8a00, #da1b60)';
+                } else if(this.classList.contains('menu-btn')) {
+                    this.style.background = 'linear-gradient(to right, #1a2a6c, #4a6fc1)';
+                }
+            });
         });
     </script>
 </body>
