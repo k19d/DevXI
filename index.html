@@ -83,22 +83,6 @@
             width: 100%;
         }
         
-        .newfile-btn {
-            display: inline-block;
-            background: linear-gradient(to right, #00b09b, #96c93d);
-            color: white;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0, 176, 155, 0.4);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            width: 100%;
-        }
-        
         .download-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(218, 27, 96, 0.6);
@@ -109,12 +93,7 @@
             box-shadow: 0 8px 20px rgba(26, 42, 108, 0.6);
         }
         
-        .newfile-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 176, 155, 0.6);
-        }
-        
-        .download-btn:active, .menu-btn:active, .newfile-btn:active {
+        .download-btn:active, .menu-btn:active {
             transform: translateY(1px);
         }
         
@@ -142,12 +121,8 @@
                 اضغط للتحميل
             </button>
             
-            <button class="menu-btn" onclick="window.location.href='https://www.mediafire.com/file/fzn4wyal9azn5pg/cracked_by_zinx_%252C%2523%2523.lua/file'">
+            <button class="menu-btn" onclick="window.location.href='https://www.mediafire.com/file/s1f077x1z9kch3w/Compiler.lua/file'">
                 Menu
-            </button>
-
-            <button class="newfile-btn" onclick="window.location.href='https://www.mediafire.com/file/4jbzo81u41j005d/DAYLI_VIP_ANTI_BAN.lua/file'">
-                New File
             </button>
         </div>
         
@@ -156,7 +131,7 @@
 
     <script>
         // إضافة تأثيرات إضافية للأزرار
-        const buttons = document.querySelectorAll('.download-btn, .menu-btn, .newfile-btn');
+        const buttons = document.querySelectorAll('.download-btn, .menu-btn');
         
         buttons.forEach(button => {
             button.addEventListener('mouseover', function() {
@@ -164,8 +139,6 @@
                     this.style.background = 'linear-gradient(to right, #da1b60, #ff8a00)';
                 } else if(this.classList.contains('menu-btn')) {
                     this.style.background = 'linear-gradient(to right, #4a6fc1, #1a2a6c)';
-                } else if(this.classList.contains('newfile-btn')) {
-                    this.style.background = 'linear-gradient(to right, #96c93d, #00b09b)';
                 }
             });
             
@@ -174,8 +147,6 @@
                     this.style.background = 'linear-gradient(to right, #ff8a00, #da1b60)';
                 } else if(this.classList.contains('menu-btn')) {
                     this.style.background = 'linear-gradient(to right, #1a2a6c, #4a6fc1)';
-                } else if(this.classList.contains('newfile-btn')) {
-                    this.style.background = 'linear-gradient(to right, #00b09b, #96c93d)';
                 }
             });
         });
