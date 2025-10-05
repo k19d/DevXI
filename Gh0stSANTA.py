@@ -577,4 +577,4 @@ def enable_maintenance_mode(message):
     maintenance_mode = True
     save_maintenance_status(True)
     
-    maintenance_message = "⚙️ تنبيه صيانة ⚙️\n\n⚠️ البوت في وضع الصيانة
+    maintenance_message = "⚙️ تنبيه صيانة ⚙️\n\n⚠️ البوت في وضع الصيانة\nيرجى المحاولة لاحقاً."
